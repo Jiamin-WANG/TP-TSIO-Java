@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>TP JavaScript 03</title>
+<script type="text/javascript" src="scripts/monScript1.js">
+	
+</script>
+</head>
+<body>
+	<p>
+		Paragraphe HTML<br />
+		<script type="text/javascript">
+			/*                   for (i = 0; i < 4; i++)
+			                          document.writeln('Contenu ins&eacute;r&eacute; par JavaScript !<br />');
+
+			          	var str1 = 'bonjour';
+			          	var str2 = "bonjour";
+			          	var nb1 = 2;
+			          	var bool1 = true;
+			          	var obj1 = new Date();  // construire un objet date
+			           /* 	document.writeln(typeof(str1));
+			          	document.writeln(typeof(str2));
+			          	document.writeln(typeof(nb1));
+			          	document.writeln(typeof(bool1));
+			          	document.writeln(typeof(obj1)); */
+
+			function print(chaine) {
+				document.writeln(chaine + '<BR>');
+			}
+			function quote(str) {
+				return "'" + str + "'";
+			}
+
+			print('hello');
+			print(quote('bonjour'));
+
+			var date = null;
+			if (date == null)
+				date = new Date(); /* instant courant */
+			print(date);
+			date = new Date('Fri Feb 15 2008 15:23:15');
+			print(date);
+			date = new Date('Fri Feb 15 2008 15:23:15');
+			print(date);
+			date = new Date(2008, 1, 15, 15, 23, 15); /* Attention 1=février !!! Les paramètres de fin non fournis sont à 0. */
+			print(date);
+
+			var date1 = new Date();
+			var date2 = new Date();
+			if (date1.getTime() < date2.getTime())
+				print(date1 + ' est ant&eacute;rieur à ' + date2);
+			if (date1.getTime() == date2.getTime())
+				print(date1 + ' est &eacute;gal à ' + date2);
+
+			print(date1.dfggkhfdklhsl + '<br>');
+			if (date1.dfggkhfdklhsl == undefined)
+				print("La propri&eacute;t&eacute; dfggkhfdklhsl n'est pas d&eacute;finie <br>");
+
+			if (!date1.dfggkhfdklhsl)
+				print("La propriété dfggkhfdklhsl vaut null ou undefined");
+			date1.dfggkhfdklhsl = null;
+			if (!date1.dfggkhfdklhsl)
+				print("La propriété dfggkhfdklhsl vaut null ou undefined<br>");
+
+			function Compteur() {
+				this.val = 0; // this est l'ojet créé
+			}
+			print('Appel en tant que constructeur');
+			var c1 = new Compteur();
+			print('c1.val = ' + c1.val); // => 0  
+			print('this.val = ' + this.val);
+			print('c1 instanceof Compteur = ' + (c1 instanceof Compteur)); // => true  
+			print('c1.constructor = ' + c1.constructor + '<br>'); // affiche le code source du constructeur de c1
+
+			print('Appel en tant que fonction simple');
+			var x = Compteur(); // absence de new (juste pour voir ce que ça fait quand on l'oublie)
+			print('x = ' + x); // => undefined
+			print('this.val = ' + this.val + '<br>'); //=>0  
+
+			c1.prop1 = 'bonjour';
+			c1.prop2 = 3;
+
+			print('c1.prop1 = ' + c1.prop1); // => bonjour  
+			print('c1.prop2 = ' + c1.prop2 + '<br>'); // => 3
+
+			c1.hello = function() {
+				print(this.prop1 + ', ' + this.prop2); // => bonjour, 3
+			}
+			c1.hello();
+
+			function dump(o) {
+				var i;
+				for (i in o)
+					print(i);
+			}
+			dump(c1); // => val
+			// => prop1
+			// => prop2
+			// => hello
+
+			function dump(o) {
+				var i;
+				for (i in o)
+					print(i + ' : ' + o[i]);
+			}
+			dump(c1); // => val : 0
+			// => prop1 : bonjour
+			// => prop2 : 3
+			// => hello : function () { print(this.prop1 + ", " + this.prop2); }
+		
+			print("");
+			var obj1 = {
+			        'value' : 0,
+			        'prop1' : 'bonjour',
+			        'prop2' : 3,
+			        'hello' : function() {
+			                print(this.prop1+', '+this.prop2);
+			        }
+			}
+			dump(obj1);     // => value : 0
+			                // => prop1 : bonjour
+			                // => prop2 : 3
+			                // => hello : function () { print(this.prop1 + ", " + this.prop2); }
+			obj1.hello();   // bonjour, 3	
+			
+			print("");
+			var obj2 = {
+			        value : 0,
+			        prop1 : 'bonjour',
+			        prop2 : 3,
+			        hello : function() {
+			                print(this.prop1+', '+this.prop2);
+			        }
+			}
+			dump(obj2);     // => value : 0
+			                // => prop1 : bonjour
+			                // => prop2 : 3
+			                // => hello : function () { print(this.prop1 + ", " + this.prop2); }
+			obj2.hello();   // bonjour, 3
+			
+			print("");
+			var tab = [];
+			print('length = ' + tab.length);        // => 0
+			
+			print("");
+			tab[3] = 'case 3';
+			print('length = ' + tab.length);        // => 4
+			print('tab[0] = ' + tab[0]);            // => undefined
+			print('tab = ' + tab);          // => ,,,case 3
+			
+			print("");
+			print([ 1, 2, 3 ].join( ', ' ));        // chaîne => 1, 2, 3
+			print([ 1, 2, 3 ].concat( [ 4, 5 ] ));  // tableau => 1,2,3,4,5
+			print([ 'case 0', 'case 1', 'case 2', 'case 3', 'case 4' ].slice( 2, 4 ));      // tableau => case 2,case 3
+			
+			print('');
+			var tab = [ 'case 0', 'case 1', function(i) { print(this[i]); } ];
+			print('tab.length = ' + tab.length);    // => 3
+			print('tab[0] = ' + tab[0]);            // => case 0
+			tab[2](1);              // appelle la méthode en case 2 avec l'argument 1 => case 1
+			
+			function Compteur(initial) {
+		        this.val = 0;
+		        if (initial != undefined)
+		                this.val = initial;
+		}
+		print(Compteur.prototype !=  undefined);        // true => cet objet prototype existe
+		Compteur.prototype.incrementer = function() {
+		        this.val++;
+		}
+		Compteur.prototype.valeur = function() {
+		        return this.val;
+		}
+		Compteur.prototype.raz = function() {
+		        this.val = 0;
+		}
+		</script>
+	</p>
+	<p>Autre paragraphe HTML</p>
+</body>
+</html>

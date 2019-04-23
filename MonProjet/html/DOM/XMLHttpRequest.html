@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Test Ajax increm.php 21</title>
+<script>
+  function sendRequest(valeur) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = requestStateHandler;
+    var strUrl = 'increm.php';
+    try {
+      xhr.open('post', strUrl, true);
+      xhr.setRequestHeader('Content-type',
+          'application/x-www-form-urlencoded');
+      xhr.send('sent=' + valeur);
+    } catch (err) {
+      alert(err.name + ' ' + strUrl);
+    }
+  }
+  function requestStateHandler() {
+    var xhr = this;
+    if (this.readyState == 4) { // 4 <=> réponse reçue
+      switch (xhr.status) {
+      case 200:
+        document.getElementById('idReceived').innerHTML = xhr.responseText; // mise à jour de la page Web
+        break;
+      default:
+        alert(xhr.status);
+      }
+    }
+  }
+</script>
+</head>
+<body>
+  <div>
+    <p>
+      Émis : <input type="text" id="idSent" name="sent"
+        value="1"></input>
+    </p>
+                <p>
+      Reçu : <span id="idReceived"></span>
+    </p>
+    <button onclick="sendRequest(document.getElementById('idSent').value)">Update</button>
+  </div>
+  <script>
+  document.getElementById('idForm').reset();
+        </script>
+</body>
+</html>

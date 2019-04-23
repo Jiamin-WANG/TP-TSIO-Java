@@ -1,0 +1,33 @@
+  <body><pre><script>
+  var strJSON = '{ "firstName" : "John",  "lastName" : "Smith", "address" : '
+      + '{ "streetAddress" : "21 2nd street", "city" : "New York", "state" : "NY", "postalCode" : 10021 },'
+      + '"phoneNumbers" : [ "212 732-1234", "646 123-4567" ] }';
+  var oJSON = eval('(' + strJSON + ')');
+  displayJSON(oJSON);
+  document.writeln(oJSON.firstName);
+  document.writeln(oJSON.lastName);
+  document.writeln(oJSON.address.streetAddress);
+  document.writeln(oJSON.address.city);
+  document.writeln(oJSON.address.state);
+  document.writeln(oJSON.address.postalCode);
+  document.writeln(oJSON.phoneNumbers);
+  document.writeln(oJSON.phoneNumbers[0]);
+  document.writeln(oJSON.phoneNumbers[1]);
+  
+  function displayJSON(oJSON, ident) {
+	  if (ident==undefined)
+	    ident = '';
+	  var ident2 = ident+'\t';
+	  if (typeof(oJSON) == 'object') {
+	    document.writeln(oJSON instanceof Array ? '[' : '{');
+	    var i;
+	    for (i in oJSON) {
+	      document.write(ident2+i +' : ');
+	      displayJSON(oJSON[i], ident2);
+	    }
+	    document.writeln(ident+(oJSON instanceof Array ? ']' : '}'));
+	  } else {
+	    document.writeln(oJSON);
+	  }
+	}
+</script></pre></body>

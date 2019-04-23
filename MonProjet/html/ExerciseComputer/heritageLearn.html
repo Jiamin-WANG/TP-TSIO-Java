@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TP JavaScript</title>
+<script>
+    class Compteur {
+    constructor() {
+    }
+    }
+    class CompteurDeb extends Compteur {
+    constructor() {
+        super();
+    }
+    }
+    c2 = new CompteurDeb();
+    console.log(c2 instanceof CompteurDeb);             // true
+    console.log(c2 instanceof Compteur);                // true
+    console.log(c2.constructor);                        // function Compteur() { }
+    console.log(c2.__proto__ == CompteurDeb.prototype); // true
+
+    CompteurDeb.prototype = new Compteur();
+
+    CompteurDeb.prototype.Compteur_incrementer = CompteurDeb.prototype.incrementer;
+
+    CompteurDeb.prototype.incrementer = function() {
+    if (this.val == 5)
+        this.deb = true;
+    else   
+        this.Compteur_incrementer();
+    };
+    c2 = new CompteurDeb(3);
+    
+</Script>
+</head>
+<body>
+</body>
+</html>

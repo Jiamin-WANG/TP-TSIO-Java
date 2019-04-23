@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Objets du DOM HTML 18</title>
+<script>
+  function update(id) {
+    var source = document.getElementById(id);//Returns the element that has the ID attribute with the specified value
+    //l'usage de getElementById pour retrouver cet objet grâce à son identifiant (id qui vaut ici MyHeader)
+    source.innerHTML = 'La source est une balise ' + source.nodeName;
+  }
+</script>
+</head>
+<body>
+  <h1 id="MyHeader" onclick="update('MyHeader')">Cliquer ici</h1>
+</body>
+</html>

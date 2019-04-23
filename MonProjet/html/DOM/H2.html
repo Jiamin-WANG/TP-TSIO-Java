@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Objets du DOM HTML 19</title>
+<script>
+  function update(source) {
+    source.innerHTML = 'La source est la balise ' + source.id;
+  }
+</script>
+</head>
+<body>
+  <h1 id="MyHeader1" onclick="update(this)">Cliquer 1</h1>
+  <h1 id="MyHeader2" onclick="update(this)">Cliquer 2</h1>
+</body>
+</html>

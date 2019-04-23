@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TP JavaScript</title>
+<script>
+class Compteur {
+  constructor(init) {
+    this.val = 0;
+    if (init != undefined)
+      this.val = init;
+  }
+  incrementer() {
+    this.val++;
+  }
+  valeur() {
+    return this.val;
+  }
+  raz() {
+    this.val = 0;
+  }
+}
+
+class CompteurDeb extends Compteur {
+    
+    constructor(init){
+        super(init);
+        this._proto_ = new Compteur();
+        this.deb=false;
+    }
+
+
+    incrementer(){
+        super.incrementer();
+    }
+
+    valeur(){
+        super.valeur();
+    }
+
+    raz(){
+         super.raz();
+    }
+
+    debordement (){
+          if(init<=this.val) {return this.deb = true; }  
+          else return this.deb = false;
+    }
+}
+
+
+</Script>
+</head>
+<body>
+    <p>
+        <script>
+            var cdeb = new CompteurDeb(5);
+            for (var i=0; i<6;i++) {
+                cdeb.incrementer();
+                document.writeln('cdeb='+cdeb.valeur()+', deb='+cdeb.debordement()+'<br/>');
+            }
+            </script>
+    </p>
+</body>
+</html>
+

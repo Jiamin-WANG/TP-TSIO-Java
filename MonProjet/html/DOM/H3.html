@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Formulaire HTML 20</title>
+<!-- <script>
+function verifierFormulaire(form) {
+  var firstName = form.firstName.value;
+  if (firstName.length == 0)
+    alert('Les champs avec une étoile doivent être renseignés');
+  return firstName.length > 0;
+}
+</script> -->
+
+</head>
+<body>
+
+  <form action="profile.html" method="get" onsubmit="return verifierFormulaire(this)">
+    <div>
+      Prénom : <input type="text" name="firstName" />
+      <span style="color: red">*</span>
+      <br />
+      <input type="submit" value="OK" />
+    </div>
+  </form>
+
+</body>
+</html>
